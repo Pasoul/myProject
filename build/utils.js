@@ -25,7 +25,19 @@ exports.cssLoaders = function (options) {
   const postcssLoader = {
     loader: 'postcss-loader',
     options: {
-      sourceMap: options.sourceMap
+      sourceMap: options.sourceMap,
+      plugins() {
+        return [
+            require('autoprefixer')({
+                browsers: [
+                    '>1%',
+                    'last 2 versions',
+                    'Firefox ESR',
+                    'not ie < 9'
+                ]
+            })
+        ]
+      }
     }
   }
 
